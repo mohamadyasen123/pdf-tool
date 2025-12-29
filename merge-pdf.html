@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge PDF Files Online - Fast, Free & Secure | PDF Masterly</title>
+    <meta name="description" content="Combine multiple PDF files into one single document. Simple, secure, and works 100% in your browser. No file limits or registration.">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="icon" href="icon/icon.png" type="image/png">
+
+    <style>
+        :root {
+            --accent-grad: linear-gradient(135deg, #ef4444 0%, #f97316 100%); /* تدرج أحمر وبرتقالي لتمييز أداة الدمج */
+            --primary: #ef4444;
+            --text-dark: #0f172a;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f8fafc; color: #334155; margin: 0; padding: 0; }
+        
+        .navbar { background: white; padding: 15px 50px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .navbar a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 1.2rem; }
+
+        .hero { text-align: center; padding: 80px 20px; background: white; }
+        h1 { font-size: 3rem; color: var(--text-dark); margin-bottom: 10px; }
+        .hero p { font-size: 1.25rem; color: #64748b; margin-bottom: 40px; }
+
+        .tool-card {
+            max-width: 800px; margin: -60px auto 40px; background: white;
+            padding: 50px; border-radius: 30px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0; text-align: center;
+        }
+
+        .drop-zone {
+            border: 3px dashed #cbd5e1; padding: 60px 20px; border-radius: 20px;
+            cursor: pointer; transition: 0.4s; background: #fafafa;
+        }
+
+        .drop-zone:hover { border-color: #f97316; background: #fff7ed; }
+        
+        #mergeBtn {
+            background: var(--accent-grad); color: white; border: none; padding: 20px 50px;
+            border-radius: 15px; font-size: 1.2rem; font-weight: 700; cursor: pointer;
+            width: 100%; margin-top: 30px; display: none; transition: 0.3s;
+            box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.4);
+        }
+
+        #mergeBtn:hover { transform: scale(1.02); }
+
+        .file-list-container {
+            margin-top: 25px; text-align: left; background: #f1f5f9;
+            padding: 20px; border-radius: 12px; display: none;
+        }
+
+        .file-item {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 8px 0; border-bottom: 1px solid #e2e8f0;
+        }
+
+        .file-item:last-child { border-bottom: none; }
+
+        /* SEO Content Section */
+        .content-section { max-width: 900px; margin: 80px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
+        .card-info { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .card-info h3 { color: var(--primary); margin-top: 0; }
+        
+        .feature-box { background: var(--accent-grad); color: white; padding: 40px; border-radius: 25px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html">PDF Masterly</a>
+    </nav>
+
+    <div class="hero">
+        <h1>Merge PDF Documents</h1>
+        <p>Combine multiple PDF files into one organized document in seconds.</p>
+    </div>
+
+    <div class="tool-card">
+        <div class="drop-zone" onclick="document.getElementById('pdfInput').click()">
+            <input type="file" id="pdfInput" accept=".pdf" multiple style="display: none;">
+            <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" width="80" alt="Merge PDF">
+            <p id="status" style="font-size: 1.2rem; font-weight: 600;">Drag and drop PDFs here or click to select</p>
+            <p style="color: #94a3b8;">Select 2 or more files to merge</p>
+        </div>
+
+        <div id="fileListContainer" class="file-list-container">
+            <h4 style="margin-top: 0;">Files to be merged:</h4>
+            <div id="fileList"></div>
+        </div>
+
+        <button id="mergeBtn">Merge Files Now</button>
+    </div>
+
+    <div class="content-section">
+        <div class="feature-box">
+            <h2>Why Use Our PDF Merger?</h2>
+            <p>PDF Masterly provides a professional-grade merging tool that works entirely within your browser. This means your sensitive documents are never uploaded to any server, ensuring 100% privacy and security for your data.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card-info">
+                <h3>🚀 Instant Merging</h3>
+                <p>No more waiting for uploads or server processing. Our client-side technology merges your files the moment you click the button.</p>
+            </div>
+            <div class="card-info">
+                <h3>🔒 Privacy Guaranteed</h3>
+                <p>Your documents stay on your computer. We believe in total data sovereignty—what happens on your device, stays on your device.</p>
+            </div>
+            <div class="card-info">
+                <h3>🛠️ Maintain Quality</h3>
+                <p>We preserve the original resolution, links, and formatting of every page. Your merged PDF will look exactly like the originals.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 60px;">
+            <h2>How to Merge PDFs for Free?</h2>
+            <p>Whether you're combining school assignments, business reports, or legal records, our tool is designed for ease of use. Simply upload your files, review the list, and download your combined PDF. No watermarks, no limits, and no registration required.</p>
+        </div>
+    </div>
+
+    <script>
+        const { PDFDocument } = PDFLib;
+        const pdfInput = document.getElementById('pdfInput');
+        const mergeBtn = document.getElementById('mergeBtn');
+        const fileListContainer = document.getElementById('fileListContainer');
+        const fileList = document.getElementById('fileList');
+
+        pdfInput.addEventListener('change', function() {
+            if (this.files.length >= 2) {
+                fileList.innerHTML = "";
+                Array.from(this.files).forEach((file, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'file-item';
+                    item.innerHTML = `<span>${index + 1}. ${file.name}</span> <small>${(file.size / 1024).toFixed(1)} KB</small>`;
+                    fileList.appendChild(item);
+                });
+                fileListContainer.style.display = 'block';
+                mergeBtn.style.display = 'block';
+            } else if (this.files.length === 1) {
+                alert("Please select at least 2 files to merge.");
+            }
+        });
+
+        mergeBtn.addEventListener('click', async () => {
+            mergeBtn.innerText = "Merging Documents...";
+            mergeBtn.disabled = true;
+
+            try {
+                const mergedPdf = await PDFDocument.create();
+                for (const file of pdfInput.files) {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdf = await PDFDocument.load(arrayBuffer);
+                    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                    copiedPages.forEach((page) => mergedPdf.addPage(page));
+                }
+
+                const pdfBytes = await mergedPdf.save();
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                saveAs(blob, "merged_by_pdfmasterly.pdf");
+
+                mergeBtn.innerText = "Success! Downloading...";
+                setTimeout(() => {
+                    mergeBtn.innerText = "Merge Files Now";
+                    mergeBtn.disabled = false;
+                }, 3000);
+            } catch (error) {
+                console.error(error);
+                alert("An error occurred during merging. Please ensure the files are not password-protected.");
+                mergeBtn.disabled = false;
+                mergeBtn.innerText = "Merge Files Now";
+            }
+        });
+    </script>
+</body>
+</html>
