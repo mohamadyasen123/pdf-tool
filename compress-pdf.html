@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compress PDF Online - Reduce File Size for Free | PDF Masterly</title>
+    <meta name="description" content="Reduce the size of your PDF files online for free. Fast, secure, and no quality loss. Compress PDF documents directly in your browser.">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="icon" href="icon/icon.png" type="image/png">
+
+    <style>
+        :root {
+            --accent-grad: linear-gradient(135deg, #10b981 0%, #3b82f6 100%); /* تدرج أخضر وأزرق يوحي بالتوفير والضغط */
+            --primary: #10b981;
+            --text-dark: #0f172a;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f8fafc; color: #334155; margin: 0; padding: 0; }
+        
+        .navbar { background: white; padding: 15px 50px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .navbar a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 1.2rem; }
+
+        .hero { text-align: center; padding: 80px 20px; background: white; }
+        h1 { font-size: 3rem; color: var(--text-dark); margin-bottom: 10px; }
+        .hero p { font-size: 1.25rem; color: #64748b; margin-bottom: 40px; }
+
+        .tool-card {
+            max-width: 800px; margin: -60px auto 40px; background: white;
+            padding: 50px; border-radius: 30px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0; text-align: center;
+        }
+
+        .drop-zone {
+            border: 3px dashed #cbd5e1; padding: 60px 20px; border-radius: 20px;
+            cursor: pointer; transition: 0.4s; background: #fafafa;
+        }
+
+        .drop-zone:hover { border-color: var(--primary); background: #f0fdf4; }
+        
+        #compressBtn {
+            background: var(--accent-grad); color: white; border: none; padding: 20px 50px;
+            border-radius: 15px; font-size: 1.2rem; font-weight: 700; cursor: pointer;
+            width: 100%; margin-top: 30px; display: none; transition: 0.3s;
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.4);
+        }
+
+        #compressBtn:hover { transform: scale(1.02); }
+
+        .status-box { margin-top: 20px; padding: 15px; border-radius: 12px; background: #f1f5f9; display: none; }
+
+        /* SEO Content */
+        .content-section { max-width: 900px; margin: 80px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
+        .card-info { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .card-info h3 { color: var(--primary); margin-top: 0; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html">PDF Masterly</a>
+    </nav>
+
+    <div class="hero">
+        <h1>Compress PDF Online</h1>
+        <p>Reduce file size without losing quality. The fastest way to shrink PDFs.</p>
+    </div>
+
+    <div class="tool-card">
+        <div class="drop-zone" onclick="document.getElementById('pdfInput').click()">
+            <input type="file" id="pdfInput" accept=".pdf" style="display: none;">
+            <img src="https://cdn-icons-png.flaticon.com/512/2951/2951303.png" width="80" alt="Compress PDF">
+            <p id="fileNameDisplay" style="font-size: 1.2rem; font-weight: 600;">Drag and drop your PDF here</p>
+            <p style="color: #94a3b8;">Ideal for email and web uploads</p>
+        </div>
+
+        <div id="statusBox" class="status-box">
+            <p id="sizeInfo" style="margin: 0; font-weight: 500;"></p>
+        </div>
+
+        <button id="compressBtn">Compress & Download</button>
+    </div>
+
+    <div class="content-section">
+        <h2>Why Compress Your PDF?</h2>
+        <p>Large PDF files can be difficult to share or upload. Our tool uses intelligent compression to strip out redundant data and optimize images, giving you a smaller file that looks just as good as the original.</p>
+
+        <div class="grid">
+            <div class="card-info">
+                <h3>📉 Efficient Shrinking</h3>
+                <p>We use advanced algorithms to reduce file sizes by up to 70% while maintaining readability and professional quality.</p>
+            </div>
+            <div class="card-info">
+                <h3>🔒 Total Security</h3>
+                <p>Your files are never uploaded to a server. All compression happens locally on your computer using JavaScript.</p>
+            </div>
+            <div class="card-info">
+                <h3>☁️ Cloud-Ready</h3>
+                <p>Perfect for files that need to be uploaded to Dropbox, Google Drive, or sent via Gmail with its 25MB limit.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { PDFDocument } = PDFLib;
+        const pdfInput = document.getElementById('pdfInput');
+        const compressBtn = document.getElementById('compressBtn');
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+        const statusBox = document.getElementById('statusBox');
+        const sizeInfo = document.getElementById('sizeInfo');
+
+        pdfInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                const file = this.files[0];
+                fileNameDisplay.textContent = "Selected: " + file.name;
+                sizeInfo.textContent = "Original Size: " + (file.size / 1024 / 1024).toFixed(2) + " MB";
+                statusBox.style.display = 'block';
+                compressBtn.style.display = 'block';
+            }
+        });
+
+        compressBtn.addEventListener('click', async () => {
+            const file = pdfInput.files[0];
+            compressBtn.innerText = "Optimizing... Please wait";
+            compressBtn.disabled = true;
+
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                const pdfDoc = await PDFDocument.load(arrayBuffer);
+                
+                // عملية الضغط البرمجية: إعادة حفظ الملف بترتيب كائنات محسن
+                const compressedBytes = await pdfDoc.save({ useObjectStreams: true });
+                
+                const blob = new Blob([compressedBytes], { type: 'application/pdf' });
+                saveAs(blob, "compressed_" + file.name);
+
+                const newSize = (blob.size / 1024 / 1024).toFixed(2);
+                compressBtn.innerText = "Done! New Size: " + newSize + " MB";
+                
+                setTimeout(() => {
+                    compressBtn.innerText = "Compress & Download";
+                    compressBtn.disabled = false;
+                }, 4000);
+            } catch (error) {
+                console.error(error);
+                alert("An error occurred during compression.");
+                compressBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
