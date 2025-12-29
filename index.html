@@ -8,270 +8,169 @@
       gtag('js', new Date());
       gtag('config', 'G-22SFQH4CP1');
     </script>
-    
+
     <link rel="icon" href="icon/icon.png" type="image/png">
     <link rel="apple-touch-icon" href="icon/icon.png">
     <link rel="manifest" href="manifest.json">
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PDF Masterly - Free online PDF tools. Convert PDF to Word, PDF to JPG, Merge PDFs, Compress PDFs, and convert JPG to PDF. Fast, secure, and high quality.">
-    <meta name="keywords" content="PDF Masterly, PDF tools, PDF to Word, PDF to JPG, Merge PDF, Compress PDF, JPG to PDF, online PDF converter">
+    <meta name="description" content="PDF Masterly - Fast and Secure Online PDF Tools.">
     <title>PDF Masterly - Free Online PDF Converter & Tools</title>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
     <style>
-        /* ===== RESET & BASE STYLES ===== */
+        /* ===== الهوية البصرية للموقع ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary-color: #2563eb; --primary-dark: #1e40af;
-            --secondary-color: #10b981; --danger-color: #ef4444;
-            --bg-color: #f8fafc; --card-bg: #ffffff;
-            --text-dark: #1e293b; --text-light: #64748b;
-            --border-color: #e2e8f0;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --radius: 12px;
+            --primary-color: #2563eb;
+            --radius: 15px;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: var(--text-dark); line-height: 1.6; min-height: 100vh; padding: 20px;
+            color: #1e293b;
+            min-height: 100vh;
+            padding: 20px;
         }
-        /* ===== HEADER ===== */
-        .header { text-align: center; margin-bottom: 40px; animation: fadeInDown 0.6s ease; }
+
+        /* ===== الهيدر والشعار ===== */
+        .header { text-align: center; margin-bottom: 50px; padding-top: 20px; }
         .logo-container { display: flex; align-items: center; justify-content: center; margin-bottom: 15px; gap: 15px; }
         .logo {
-            width: 60px; height: 60px;
-            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
-            border-radius: 15px; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2); position: relative; overflow: hidden;
+            width: 65px; height: 65px;
+            background: white; border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            position: relative;
         }
-        .logo::before {
-            content: ''; position: absolute; width: 70%; height: 70%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 8px; transform: rotate(-10deg);
-        }
-        .logo::after {
-            content: 'PDF'; position: absolute; color: white; font-weight: 900; font-size: 16px;
-            z-index: 1; text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
+        .logo::after { content: 'PDF'; font-weight: 900; color: #764ba2; font-size: 18px; }
+        
         .brand-name {
-            color: white; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800;
-            text-shadow: 0 4px 6px rgba(0,0,0,0.2); letter-spacing: -0.5px;
+            color: white; font-size: clamp(2rem, 6vw, 3rem); font-weight: 800;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .brand-name .masterly {
-            background: linear-gradient(to right, #fbbf24, #f59e0b);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .header h1 {
-            color: white; font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 700;
-            margin-bottom: 10px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .header p { color: rgba(255,255,255,0.9); font-size: clamp(0.9rem, 2vw, 1.1rem); }
-        
-        .container { max-width: 1200px; margin: 0 auto; }
-        
-        /* ===== TOOL NAVIGATION ===== */
-        .tool-nav { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 30px; animation: fadeIn 0.8s ease; }
-        .tool-btn {
-            background: white; color: var(--text-dark); border: 2px solid transparent;
-            padding: 12px 24px; border-radius: 50px; font-size: 0.95rem; font-weight: 600;
-            cursor: pointer; transition: all 0.3s ease; box-shadow: var(--shadow-md);
-            text-decoration: none; display: flex; align-items: center;
-        }
-        .tool-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-        .tool-btn.active { background: var(--primary-color); color: white; border-color: var(--primary-color); }
+        .brand-name .masterly { color: #fbbf24; }
+        .header p { color: rgba(255,255,255,0.9); font-size: 1.1rem; }
 
-        .tool-section { display: none; animation: fadeInUp 0.5s ease; }
-        .tool-section.active { display: block; }
-        .card {
-            background: var(--card-bg); border-radius: var(--radius);
-            padding: clamp(20px, 4vw, 40px); box-shadow: var(--shadow-lg); margin-bottom: 20px;
-        }
-        .card h2 { color: var(--primary-color); font-size: clamp(1.3rem, 3vw, 1.8rem); margin-bottom: 10px; }
-        .card p { color: var(--text-light); margin-bottom: 25px; font-size: 0.95rem; }
+        .container { max-width: 1100px; margin: 0 auto; }
 
-        .upload-area {
-            border: 2px dashed var(--border-color); border-radius: var(--radius);
-            padding: 40px 20px; text-align: center; cursor: pointer;
-            transition: all 0.3s ease; background: var(--bg-color); margin-bottom: 20px;
+        /* ===== شبكة الأدوات - الربط الحقيقي ===== */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
         }
-        .upload-area:hover { border-color: var(--primary-color); background: rgba(37, 99, 235, 0.05); }
-        .upload-area.dragover { border-color: var(--primary-color); background: rgba(37, 99, 235, 0.1); }
-        .upload-icon { font-size: 3rem; color: var(--primary-color); margin-bottom: 15px; }
-        .upload-text { color: var(--text-dark); font-weight: 600; margin-bottom: 5px; }
-        .upload-hint { color: var(--text-light); font-size: 0.85rem; }
 
-        .btn {
-            background: var(--primary-color); color: white; border: none;
-            padding: 12px 30px; border-radius: 8px; font-size: 1rem; font-weight: 600;
-            cursor: pointer; transition: all 0.3s ease; display: inline-block; text-decoration: none;
+        .tool-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: var(--radius);
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.2);
         }
-        .btn:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .btn:disabled { background: var(--text-light); cursor: not-allowed; transform: none; }
-        .btn-success { background: var(--secondary-color); }
-        
-        .file-list { margin: 20px 0; }
-        .file-item {
-            background: var(--bg-color); padding: 15px; border-radius: 8px;
-            margin-bottom: 10px; display: flex; justify-content: space-between;
-            align-items: center; flex-wrap: wrap; gap: 10px;
+
+        .tool-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 40px rgba(0,0,0,0.2);
         }
-        .file-name { color: var(--text-dark); font-weight: 500; flex: 1; min-width: 150px; }
-        .remove-btn {
-            background: var(--danger-color); color: white; border: none;
-            padding: 6px 12px; border-radius: 6px; cursor: pointer;
+
+        .tool-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
         }
-        
-        .progress-container { display: none; margin: 20px 0; }
-        .progress-container.active { display: block; }
-        .progress-bar { width: 100%; height: 8px; background: var(--border-color); border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); width: 0%; transition: width 0.3s ease; }
-        
-        .alert { padding: 15px 20px; border-radius: 8px; margin: 15px 0; display: none; }
-        .alert.active { display: block; animation: slideDown 0.3s ease; }
-        .alert-info { background: #dbeafe; color: #1e40af; border-left: 4px solid var(--primary-color); }
-        .alert-success { background: #d1fae5; color: #065f46; border-left: 4px solid var(--secondary-color); }
-        .alert-error { background: #fee2e2; color: #991b1b; border-left: 4px solid var(--danger-color); }
 
-        .quality-control { margin: 20px 0; }
-        .quality-label { display: flex; justify-content: space-between; margin-bottom: 10px; color: var(--text-dark); font-weight: 500; }
-        .quality-slider { width: 100%; height: 8px; border-radius: 50px; -webkit-appearance: none; background: var(--border-color); }
-        .quality-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; background: var(--primary-color); border-radius: 50%; cursor: pointer; }
+        .tool-card h3 {
+            font-size: 1.4rem;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
 
-        .footer { text-align: center; margin-top: 50px; padding: 30px 20px; color: rgba(255,255,255,0.9); font-size: 0.9rem; }
-        .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 15px; }
-        .footer-links a { color: white; text-decoration: none; font-weight: 500; }
-        
-        .seo-section { max-width: 900px; margin: 0 auto 30px; background: white; padding: 20px 30px; border-radius: var(--radius); box-shadow: var(--shadow-md); }
-        .hidden { display: none !important; }
+        .tool-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* ===== قسم السيو ===== */
+        .seo-intro {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: var(--radius);
+            margin-bottom: 40px;
+            text-align: center;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
     </style>
 </head>
 <body>
-    <div class="header">
+
+    <header class="header">
         <div class="logo-container">
             <div class="logo"></div>
             <div class="brand-name">PDF <span class="masterly">Masterly</span></div>
         </div>
-        <p>Professional, fast, and secure PDF tools</p>
-    </div>
-    
+        <p>Your Secure, All-in-One PDF Solution</p>
+    </header>
+
     <div class="container">
-        <div class="seo-section">
-            <p><strong>Looking for alternatives to iLovePDF, SmallPDF, or PDF24?</strong> Our professional PDF tools offer a fast and secure alternative for all your document needs.</p>
-        </div>
-        
-        <div class="tool-nav">
-            <button class="tool-btn active" data-tool="pdf-to-word">📝 PDF to Word</button>
-            <button class="tool-btn" data-tool="pdf-to-jpg">🖼️ PDF to JPG</button>
-            <button class="tool-btn" data-tool="merge-pdf">🔗 Merge PDF</button>
-            <button class="tool-btn" data-tool="compress-pdf">📦 Compress PDF</button>
-            <button class="tool-btn" data-tool="jpg-to-pdf">📄 JPG to PDF</button>
-        </div>
-        
-        <div id="pdf-to-word" class="tool-section active">
-            <div class="card">
-                <h2>PDF to Word Converter</h2>
-                <p>Convert your PDF files to editable Word documents (.docx)</p>
-                <div class="alert alert-info" style="display: block;"> Professional cloud processing. </div>
-                <div class="upload-area" id="word-upload-area">
-                    <div class="upload-icon">📄</div>
-                    <div class="upload-text">Click to upload or drag & drop</div>
-                    <input type="file" id="word-file-input" accept=".pdf" style="display: none;">
-                </div>
-                <div class="file-list" id="word-file-list"></div>
-                <button class="btn" id="word-convert-btn" disabled>Convert to Word</button>
-                <a class="btn btn-success hidden" id="word-download-btn">Download Word File</a>
-            </div>
-        </div>
-        
-        <div id="pdf-to-jpg" class="tool-section">
-            <div class="card">
-                <h2>PDF to JPG Converter</h2>
-                <p>Convert PDF pages to high-quality JPG images</p>
-                <div class="upload-area" id="jpg-upload-area">
-                    <div class="upload-icon">🖼️</div>
-                    <input type="file" id="jpg-file-input" accept=".pdf" style="display: none;">
-                </div>
-                <div class="file-list" id="jpg-file-list"></div>
-                <button class="btn" id="jpg-convert-btn" disabled>Convert to JPG</button>
-                <div id="jpg-download-container"></div>
-            </div>
+        <div class="seo-intro">
+            <h2>Professional PDF Tools - Free & Online</h2>
+            <p>Convert, merge, and compress your PDF files directly in your browser without uploading your data to any server.</p>
         </div>
 
-        <div id="merge-pdf" class="tool-section">
-            <div class="card">
-                <h2>Merge PDF Files</h2>
-                <p>Combine multiple PDF files into a single document</p>
-                <div class="upload-area" id="merge-upload-area">
-                    <div class="upload-icon">📚</div>
-                    <input type="file" id="merge-file-input" accept=".pdf" multiple style="display: none;">
-                </div>
-                <div class="file-list" id="merge-file-list"></div>
-                <button class="btn" id="merge-convert-btn" disabled>Merge PDFs</button>
-                <a class="btn btn-success hidden" id="merge-download-btn">Download Merged PDF</a>
-            </div>
-        </div>
+        <div class="tools-grid">
+            <a href="pdf-to-word.html" class="tool-card">
+                <div class="tool-icon">📝</div>
+                <h3>PDF to Word</h3>
+                <p>Convert PDF documents to editable Word files with high accuracy.</p>
+            </a>
 
-        <div id="compress-pdf" class="tool-section">
-            <div class="card">
-                <h2>Compress PDF</h2>
-                <p>Reduce PDF file size while maintaining quality</p>
-                <div class="upload-area" id="compress-upload-area">
-                    <div class="upload-icon">📦</div>
-                    <input type="file" id="compress-file-input" accept=".pdf" style="display: none;">
-                </div>
-                <div class="file-list" id="compress-file-list"></div>
-                <button class="btn" id="compress-convert-btn" disabled>Compress PDF</button>
-            </div>
-        </div>
+            <a href="merge-pdf.html" class="tool-card">
+                <div class="tool-icon">🔗</div>
+                <h3>Merge PDF</h3>
+                <p>Combine multiple PDF files into one organized document easily.</p>
+            </a>
 
-        <div id="jpg-to-pdf" class="tool-section">
-            <div class="card">
-                <h2>JPG to PDF Converter</h2>
-                <p>Convert images to PDF format</p>
-                <div class="upload-area" id="img-upload-area">
-                    <div class="upload-icon">🖼️</div>
-                    <input type="file" id="img-file-input" accept="image/*" multiple style="display: none;">
-                </div>
-                <div class="file-list" id="img-file-list"></div>
-                <button class="btn" id="img-convert-btn" disabled>Convert to PDF</button>
-            </div>
+            <a href="compress-pdf.html" class="tool-card">
+                <div class="tool-icon">📦</div>
+                <h3>Compress PDF</h3>
+                <p>Reduce file size for easier sharing while keeping the quality.</p>
+            </a>
+
+            <a href="jpg-to-pdf.html" class="tool-card">
+                <div class="tool-icon">📄</div>
+                <h3>JPG to PDF</h3>
+                <p>Convert your JPG, PNG or BMP images into a clean PDF file.</p>
+            </a>
         </div>
     </div>
-    
-    <div class="footer">
-        <div class="footer-links">
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms of Use</a>
+
+    <footer class="footer">
+        <div style="margin-bottom: 15px;">
+            <a href="privacy.html" style="color: white; margin: 0 10px; text-decoration: none;">Privacy Policy</a> | 
+            <a href="terms.html" style="color: white; margin: 0 10px; text-decoration: none;">Terms of Use</a>
         </div>
-        <p>&copy; 2025 PDF Masterly. All Rights Reserved.</p>
-    </div>
+        <p>&copy; 2025 PDF Masterly. 100% Browser-Based Security.</p>
+    </footer>
 
-    <script>
-        // سكربت التنقل بين الأدوات
-        document.querySelectorAll('.tool-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const toolId = this.dataset.tool;
-                document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                document.querySelectorAll('.tool-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                document.getElementById(toolId).classList.add('active');
-                window.scrollTo({ top: 200, behavior: 'smooth' });
-            });
-        });
-
-        // هنا تضع باقي أكواد الجافاسكريبت البرمجية (Logic) التي كانت في ملفك الأصلي لكل أداة
-    </script>
 </body>
 </html>
