@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert JPG to PDF Online - Free, Fast & Secure | PDF Masterly</title>
+    <meta name="description" content="Convert your images to PDF documents for free. No file limits, no registration, and 100% private. Best online JPG to PDF converter.">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="icon" href="icon/icon.png" type="image/png">
+
+    <style>
+        :root {
+            --accent-grad: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --primary: #6366f1;
+            --text-dark: #0f172a;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f1f5f9; color: #334155; margin: 0; padding: 0; }
+        
+        .navbar { background: white; padding: 15px 50px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .navbar a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 1.2rem; }
+
+        .hero { text-align: center; padding: 80px 20px; background: white; }
+        h1 { font-size: 3rem; color: var(--text-dark); margin-bottom: 10px; }
+        .hero p { font-size: 1.25rem; color: #64748b; margin-bottom: 40px; }
+
+        .tool-card {
+            max-width: 800px; margin: -60px auto 40px; background: white;
+            padding: 50px; border-radius: 30px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
+            border: 1px solid #e2e8f0; text-align: center;
+        }
+
+        .drop-zone {
+            border: 3px dashed #cbd5e1; padding: 80px 20px; border-radius: 20px;
+            cursor: pointer; transition: 0.4s; background: #fafafa;
+        }
+
+        .drop-zone:hover { border-color: #a855f7; background: #f5f3ff; }
+        
+        #convertBtn {
+            background: var(--accent-grad); color: white; border: none; padding: 20px 50px;
+            border-radius: 15px; font-size: 1.2rem; font-weight: 700; cursor: pointer;
+            width: 100%; margin-top: 30px; display: none; transition: 0.3s;
+            box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.4);
+        }
+
+        #convertBtn:hover { transform: scale(1.02); }
+
+        /* SEO Content */
+        .content-section { max-width: 900px; margin: 80px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
+        .card-info { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .card-info h3 { color: var(--primary); margin-top: 0; }
+        
+        .step-box { background: var(--accent-grad); color: white; padding: 40px; border-radius: 25px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html">PDF Masterly</a>
+    </nav>
+
+    <div class="hero">
+        <h1>JPG to PDF Converter</h1>
+        <p>Transform your images into high-quality PDF documents instantly.</p>
+    </div>
+
+    <div class="tool-card">
+        <div class="drop-zone" onclick="document.getElementById('imgInput').click()">
+            <input type="file" id="imgInput" accept="image/*" multiple style="display: none;">
+            <img src="https://cdn-icons-png.flaticon.com/512/3342/3342137.png" width="100" alt="Image to PDF">
+            <p id="status" style="font-size: 1.2rem; font-weight: 600;">Drag and drop images here or click to browse</p>
+            <p style="color: #94a3b8;">Supports JPG, PNG, WEBP</p>
+        </div>
+        <button id="convertBtn">Create PDF Now</button>
+    </div>
+
+    <div class="content-section">
+        <div class="step-box">
+            <h2>How to Convert Images to PDF?</h2>
+            <ol style="font-size: 1.1rem; line-height: 2;">
+                <li>Select one or multiple images from your computer or phone.</li>
+                <li>Wait for the tool to arrange your images into a PDF format.</li>
+                <li>Click "Create PDF Now" to download your document instantly.</li>
+            </ol>
+        </div>
+
+        <div class="grid">
+            <div class="card-info">
+                <h3>⭐ High Quality Output</h3>
+                <p>Our converter preserves the original resolution of your images, ensuring that your PDF looks sharp and professional, whether it's for printing or digital sharing.</p>
+            </div>
+            <div class="card-info">
+                <h3>🔒 Your Privacy Matters</h3>
+                <p>Processing happens 100% in your browser. We never upload your images to our servers. Your personal photos and documents stay on your device.</p>
+            </div>
+            <div class="card-info">
+                <h3>🚀 Fast & No Limits</h3>
+                <p>Convert as many images as you like without any file size limits or daily quotas. No email registration is ever required.</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 60px;">
+            <h2>The Best Online Image to PDF Converter</h2>
+            <p>PDF Masterly is built to be the most efficient tool for students, photographers, and office workers. Converting JPG to PDF has never been this easy and secure. Since we use advanced JavaScript technology, you get instant results without the wait times of traditional server-side tools.</p>
+        </div>
+    </div>
+
+    <script>
+        const { jsPDF } = window.jspdf;
+        const imgInput = document.getElementById('imgInput');
+        const convertBtn = document.getElementById('convertBtn');
+        const status = document.getElementById('status');
+
+        imgInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                status.textContent = `${this.files.length} images selected ready to convert!`;
+                convertBtn.style.display = 'block';
+            }
+        });
+
+        convertBtn.addEventListener('click', async () => {
+            convertBtn.innerText = "Generating PDF...";
+            convertBtn.disabled = true;
+
+            const doc = new jsPDF();
+            const files = imgInput.files;
+
+            for (let i = 0; i < files.length; i++) {
+                const imgData = await readFileAsDataURL(files[i]);
+                const imgProps = doc.getImageProperties(imgData);
+                const pdfWidth = doc.internal.pageSize.getWidth();
+                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+                
+                if (i > 0) doc.addPage();
+                doc.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+            }
+
+            doc.save("images_to_pdf.pdf");
+            convertBtn.innerText = "Success! Downloading...";
+            setTimeout(() => {
+                convertBtn.innerText = "Create PDF Now";
+                convertBtn.disabled = false;
+            }, 3000);
+        });
+
+        function readFileAsDataURL(file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.readAsDataURL(file);
+            });
+        }
+    </script>
+</body>
+</html>
