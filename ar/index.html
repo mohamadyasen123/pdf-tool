@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-22SFQH4CP1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-22SFQH4CP1');
+    </script>
+
+    <link rel="icon" href="icon/icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon/icon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="PDF Masterly - أدوات PDF مجانية أونلاين. تحويل، دمج، وضغط ملفات PDF بسرعة وأمان تام داخل متصفحك.">
+    <title>PDF Masterly - أدوات تحويل PDF مجانية أونلاين (يدعم العربية)</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== الهوية البصرية للموقع ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-color: #2563eb;
+            --radius: 15px;
+        }
+        body {
+            font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1e293b;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* ===== الهيدر والشعار ===== */
+        .header { text-align: center; margin-bottom: 50px; padding-top: 20px; }
+        .logo-container { display: flex; align-items: center; justify-content: center; margin-bottom: 15px; gap: 15px; }
+        .logo {
+            width: 65px; height: 65px;
+            background: white; border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .logo::after { content: 'PDF'; font-weight: 900; color: #764ba2; font-size: 18px; }
+        
+        .brand-name {
+            color: white; font-size: clamp(2rem, 6vw, 3rem); font-weight: 800;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .brand-name .masterly { color: #fbbf24; }
+        .header p { color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-top: 10px; }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        /* ===== شبكة الأدوات ===== */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .tool-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: var(--radius);
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 40px rgba(0,0,0,0.2);
+        }
+
+        .tool-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+        }
+
+        .tool-card h3 {
+            font-size: 1.4rem;
+            color: #1e293b;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .tool-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ===== قسم السيو (SEO) لزيادة الأرشفة ===== */
+        .seo-intro {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: var(--radius);
+            margin-bottom: 40px;
+            text-align: center;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .seo-intro h2 { font-size: 1.8rem; margin-bottom: 15px; }
+        .seo-intro p { line-height: 1.8; font-size: 1.05rem; }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo"></div>
+            <div class="brand-name">PDF <span class="masterly">Masterly</span></div>
+        </div>
+        <p>حلول PDF آمنة، سريعة، ومجانية بالكامل</p>
+    </header>
+
+    <div class="container">
+        <div class="seo-intro">
+            <h2>أدوات PDF احترافية - مجانية وأونلاين</h2>
+            <p>قم بتحويل، دمج، وضغط ملفات PDF الخاصة بك مباشرة من المتصفح. نحن نضمن خصوصيتك حيث تتم معالجة جميع الملفات محلياً دون الحاجة لرفعها إلى أي خادم.</p>
+        </div>
+
+        <div class="tools-grid">
+            <a href="pdf-to-word.html" class="tool-card">
+                <div class="tool-icon">📝</div>
+                <h3>تحويل PDF إلى Word</h3>
+                <p>حول ملفات PDF إلى مستندات Word قابلة للتعديل بدقة عالية ودعم للغة العربية.</p>
+            </a>
+
+            <a href="merge-pdf.html" class="tool-card">
+                <div class="tool-icon">🔗</div>
+                <h3>دمج ملفات PDF</h3>
+                <p>ادمج عدة ملفات PDF في مستند واحد منظم بسهولة تامة وسرعة فائقة.</p>
+            </a>
+
+            <a href="compress-pdf.html" class="tool-card">
+                <div class="tool-icon">📦</div>
+                <h3>تقليل حجم PDF</h3>
+                <p>قم بضغط ملفات PDF لتسهيل مشاركتها عبر الإيميل مع الحفاظ على جودة المحتوى.</p>
+            </a>
+
+            <a href="jpg-to-pdf.html" class="tool-card">
+                <div class="tool-icon">📄</div>
+                <h3>تحويل الصور إلى PDF</h3>
+                <p>حول صورك (JPG, PNG) إلى ملف PDF منسق واحترافي في ثوانٍ معدودة.</p>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div style="margin-bottom: 15px;">
+            <a href="privacy.html" style="color: white; margin: 0 10px; text-decoration: none;">سياسة الخصوصية</a> | 
+            <a href="terms.html" style="color: white; margin: 0 10px; text-decoration: none;">شروط الاستخدام</a>
+        </div>
+        <p>&copy; 2025 PDF Masterly. أمان بنسبة 100% داخل متصفحك.</p>
+    </footer>
+
+</body>
+</html>
