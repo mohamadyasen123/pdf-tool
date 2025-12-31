@@ -1,130 +1,251 @@
+
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ضغط ملفات PDF أونلاين مجانًا | PDF Masterly</title>
-    <meta name="description" content="تقليل حجم ملفات PDF مجانًا وبأمان تام مباشرة من المتصفح بدون فقدان الجودة.">
+<title>ضغط ملفات PDF أونلاين | PDF Masterly</title>
+<meta name="description" content="ضغط ملفات PDF أونلاين عن طريق تقليل جودة الصور، يعمل مباشرة من المتصفح بدون رفع الملفات.">
 
-    <link rel="icon" href="icon/icon.png" type="image/png">
+<link rel="icon" href="icon/icon.png">
 
-    <style>
-        :root {
-            --accent-grad: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-            --primary: #10b981;
-            --text-dark: #0f172a;
-        }
-        body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background-color: #f8fafc; color: #334155; margin:0; padding:0; direction: rtl; }
-        .navbar { background:white; padding:15px 50px; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
-        .navbar a { text-decoration:none; color: var(--primary); font-weight:bold; font-size:1.2rem; }
-        .hero { text-align:center; padding:80px 20px; background:white; }
-        h1 { font-size:3rem; color: var(--text-dark); margin-bottom:10px; }
-        .hero p { font-size:1.25rem; color:#64748b; margin-bottom:40px; }
-        .tool-card { max-width:800px; margin:-60px auto 40px; background:white; padding:50px; border-radius:30px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.1); border:1px solid #e2e8f0; text-align:center; }
-        .drop-zone { border:3px dashed #cbd5e1; padding:60px 20px; border-radius:20px; cursor:pointer; transition:0.4s; background:#fafafa; }
-        .drop-zone:hover { border-color: var(--primary); background:#f0fdf4; }
-        #compressBtn { background:var(--accent-grad); color:white; border:none; padding:20px 50px; border-radius:15px; font-size:1.2rem; font-weight:700; cursor:pointer; width:100%; margin-top:30px; display:none; transition:0.3s; box-shadow:0 10px 15px -3px rgba(16,185,129,0.4); }
-        #compressBtn:hover { transform: scale(1.02); }
-        .status-box { margin-top:20px; padding:15px; border-radius:12px; background:#f1f5f9; display:none; }
-        .content-section { max-width:900px; margin:80px auto; padding:0 20px; }
-        .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:40px; margin-top:50px; }
-        .card-info { background:white; padding:30px; border-radius:20px; box-shadow:0 4px 6px rgba(0,0,0,0.02); }
-        .card-info h3 { color: var(--primary); margin-top:0; }
-    </style>
+<!-- PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background:#f8fafc;
+    margin:0;
+    color:#334155;
+}
+.navbar {
+    background:#fff;
+    padding:15px 40px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+.navbar a {
+    color:#10b981;
+    font-weight:bold;
+    text-decoration:none;
+    font-size:1.2rem;
+}
+.hero {
+    text-align:center;
+    padding:70px 20px;
+    background:#fff;
+}
+.hero h1 {
+    margin:0;
+    font-size:2.6rem;
+    color:#0f172a;
+}
+.hero p {
+    color:#64748b;
+    font-size:1.2rem;
+}
+.tool {
+    max-width:700px;
+    background:#fff;
+    margin:-50px auto 40px;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 20px 40px rgba(0,0,0,.1);
+    text-align:center;
+}
+.drop {
+    border:3px dashed #cbd5e1;
+    padding:50px;
+    border-radius:20px;
+    cursor:pointer;
+    background:#fafafa;
+}
+.drop:hover {
+    border-color:#10b981;
+    background:#f0fdf4;
+}
+button {
+    width:100%;
+    padding:18px;
+    margin-top:25px;
+    border:none;
+    border-radius:15px;
+    font-size:1.1rem;
+    font-weight:bold;
+    background:linear-gradient(135deg,#10b981,#3b82f6);
+    color:#fff;
+    cursor:pointer;
+    display:none;
+}
+select {
+    width:100%;
+    padding:12px;
+    margin-top:20px;
+    border-radius:10px;
+    border:1px solid #cbd5e1;
+    font-size:1rem;
+}
+.info {
+    margin-top:15px;
+    font-weight:bold;
+}
+.footer {
+    text-align:center;
+    color:#64748b;
+    margin:40px 0;
+}
+</style>
 </head>
 
 <body>
 
 <nav class="navbar">
-    <a href="index.html">PDF Masterly</a>
+    <a href="#">PDF Masterly</a>
 </nav>
 
 <div class="hero">
     <h1>ضغط ملفات PDF أونلاين</h1>
-    <p>قلل حجم ملفات PDF بدون فقدان الجودة وبأسرع طريقة ممكنة.</p>
+    <p>تقليل حجم ملفات PDF عن طريق ضغط الصور – بدون رفع الملفات 🔒</p>
 </div>
 
-<div class="tool-card">
-    <div class="drop-zone" onclick="document.getElementById('pdfInput').click()">
-        <input type="file" id="pdfInput" accept=".pdf" style="display:none;">
-        <p id="fileNameDisplay" style="font-weight:600;"></p>
-        <p id="sizeInfo" style="margin:0; font-weight:500;"></p>
+<div class="tool">
+    <div class="drop" onclick="pdfInput.click()">
+        <input type="file" id="pdfInput" accept=".pdf" hidden>
+        <p id="fileName">اضغط لاختيار ملف PDF</p>
+        <p id="sizeInfo"></p>
     </div>
 
-    <div id="statusBox" class="status-box"></div>
+    <select id="quality">
+        <option value="0.8">🟢 جودة عالية (ضغط خفيف)</option>
+        <option value="0.6" selected>🟡 جودة متوسطة (موصى بها)</option>
+        <option value="0.4">🔴 جودة منخفضة (ضغط قوي)</option>
+    </select>
 
     <button id="compressBtn">ضغط الملف وتحميله</button>
+
+    <div class="info" id="status"></div>
 </div>
 
-<div class="content-section">
-    <h2>لماذا تضغط ملفات PDF؟</h2>
-    <p>الملفات الكبيرة يصعب مشاركتها أو رفعها. أداتنا تقلل الحجم مع الحفاظ على الجودة لتسهيل الإرسال والتخزين.</p>
-
-    <div class="grid">
-        <div class="card-info"><h3>📉 تقليل فعّال</h3><p>تقليل حجم الملف بنسبة كبيرة مع الحفاظ على الوضوح.</p></div>
-        <div class="card-info"><h3>🔒 أمان كامل</h3><p>جميع العمليات تتم على جهازك بدون رفع الملفات.</p></div>
-        <div class="card-info"><h3>☁️ جاهز للمشاركة</h3><p>مناسب للإرسال عبر البريد أو التخزين السحابي.</p></div>
-    </div>
+<div class="footer">
+    يعمل بالكامل داخل المتصفح 🔐 بدون رفع الملفات
 </div>
 
-<script src="gs/gs-worker.js"></script>
 <script>
-    const pdfInput = document.getElementById('pdfInput');
-    const compressBtn = document.getElementById('compressBtn');
-    const fileNameDisplay = document.getElementById('fileNameDisplay');
-    const sizeInfo = document.getElementById('sizeInfo');
-    const statusBox = document.getElementById('statusBox');
-    let selectedFile = null;
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
-    pdfInput.addEventListener('change', function () {
-        if(this.files.length>0){
-            selectedFile = this.files[0];
-            fileNameDisplay.textContent = "الملف المختار: "+selectedFile.name;
-            sizeInfo.textContent = "الحجم الأصلي: "+(selectedFile.size/1024/1024).toFixed(2)+" ميغابايت";
-            compressBtn.style.display="block";
-            statusBox.style.display="block";
-        }
-    });
+const pdfInput = document.getElementById("pdfInput");
+const compressBtn = document.getElementById("compressBtn");
+const fileName = document.getElementById("fileName");
+const sizeInfo = document.getElementById("sizeInfo");
+const status = document.getElementById("status");
 
-    compressBtn.addEventListener('click', async ()=>{
-        if(!selectedFile) return;
-        compressBtn.disabled=true;
-        compressBtn.textContent="جاري الضغط…";
-        statusBox.textContent="الرجاء الانتظار حتى انتهاء الضغط";
+pdfInput.onchange = () => {
+    const file = pdfInput.files[0];
+    if (!file) return;
 
-        try{
-            const arrayBuffer = await selectedFile.arrayBuffer();
-            const gs = await GS.init(); // GS موجود في gs-worker.js
-            const result = await gs.run(arrayBuffer,{
-                args:[
-                    "-sDEVICE=pdfwrite",
-                    "-dCompatibilityLevel=1.4",
-                    "-dPDFSETTINGS=/ebook",
-                    "-dNOPAUSE",
-                    "-dQUIET",
-                    "-dBATCH",
-                    "-sOutputFile=output.pdf",
-                    "input.pdf"
-                ]
-            });
-            const blob = new Blob([result], {type:"application/pdf"});
-            const newSize=(blob.size/1024/1024).toFixed(2);
-            const a=document.createElement("a");
-            a.href=URL.createObjectURL(blob);
-            a.download="compressed_"+selectedFile.name;
-            a.click();
-            statusBox.textContent="تم الضغط ✔ الحجم الجديد: "+newSize+" ميغابايت";
-            compressBtn.textContent="ضغط الملف وتحميله";
-            compressBtn.disabled=false;
-        }catch(err){
-            console.error(err);
-            statusBox.textContent="حدث خطأ أثناء الضغط.";
-            compressBtn.disabled=false;
-            compressBtn.textContent="ضغط الملف وتحميله";
-        }
-    });
+    fileName.textContent = file.name;
+    sizeInfo.textContent =
+        "الحجم الأصلي: " + (file.size / 1024 / 1024).toFixed(2) + " MB";
+    compressBtn.style.display = "block";
+};
+
+compressBtn.onclick = async () => {
+    const file = pdfInput.files[0];
+    const quality = parseFloat(document.getElementById("quality").value);
+
+    compressBtn.disabled = true;
+    status.textContent = "⏳ جاري ضغط الملف...";
+
+    const buffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+
+    const { jsPDF } = window.jspdf;
+    const newPdf = new jsPDF("p","mm","a4");
+
+    for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const viewport = page.getViewport({ scale: 1.3 });
+
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        await page.render({ canvasContext: ctx, viewport }).promise;
+
+        const img = canvas.toDataURL("image/jpeg", quality);
+
+        if (i > 1) newPdf.addPage();
+        newPdf.addImage(img, "JPEG", 0, 0, 210, 297);
+    }
+
+    newPdf.save("compressed_" + file.name);
+
+    status.textContent = "✅ تم الضغط بنجاح";
+    compressBtn.disabled = false;
+};
 </script>
 
 </body>
 </html>
+<section class="content-section">
+    <h2>📘 طريقة استخدام أداة ضغط ملفات PDF</h2>
+    <ol style="line-height:2; font-size:1.05rem;">
+        <li>اضغط على مربع <strong>اختيار ملف PDF</strong> وحدد الملف من جهازك.</li>
+        <li>اختر مستوى الجودة المناسب حسب احتياجك:
+            <ul>
+                <li>🟢 جودة عالية: أقل ضغط – أفضل وضوح</li>
+                <li>🟡 جودة متوسطة: توازن مثالي (موصى بها)</li>
+                <li>🔴 جودة منخفضة: ضغط قوي – حجم أصغر</li>
+            </ul>
+        </li>
+        <li>اضغط على زر <strong>ضغط الملف وتحميله</strong>.</li>
+        <li>سيتم تنزيل الملف المضغوط تلقائيًا على جهازك.</li>
+    </ol>
+</section>
+
+<section class="content-section">
+    <h2>✨ مميزات أداة ضغط PDF</h2>
+    <div class="grid">
+        <div class="card-info">
+            <h3>⚡ ضغط سريع</h3>
+            <p>يتم ضغط ملفات PDF خلال ثوانٍ مباشرة داخل المتصفح بدون انتظار أو رفع ملفات.</p>
+        </div>
+        <div class="card-info">
+            <h3>🔒 خصوصية تامة</h3>
+            <p>لا يتم رفع أي ملف إلى أي خادم. كل العمليات تتم محليًا على جهازك.</p>
+        </div>
+        <div class="card-info">
+            <h3>📉 تقليل حجم فعلي</h3>
+            <p>تقليل حجم ملفات PDF عبر ضغط الصور مع الحفاظ على وضوح النصوص.</p>
+        </div>
+        <div class="card-info">
+            <h3>💻 يعمل على جميع الأجهزة</h3>
+            <p>متوافق مع الكمبيوتر، الهاتف، والتابلت بدون تثبيت برامج.</p>
+        </div>
+        <div class="card-info">
+            <h3>🆓 مجاني بالكامل</h3>
+            <p>استخدم الأداة بدون تسجيل أو قيود أو علامات مائية.</p>
+        </div>
+        <div class="card-info">
+            <h3>🌐 متوافق مع GitHub Pages</h3>
+            <p>يعمل بدون سيرفر أو إعدادات معقدة.</p>
+        </div>
+    </div>
+</section>
+
+<section class="content-section">
+    <h2>❓ متى تحتاج إلى ضغط ملفات PDF؟</h2>
+    <p style="line-height:1.9; font-size:1.05rem;">
+        ضغط ملفات PDF مهم عند إرسال الملفات عبر البريد الإلكتروني،
+        أو رفعها على مواقع تقبل حجمًا محدودًا،
+        أو لتوفير مساحة التخزين.
+        أداة PDF Masterly تساعدك على تقليل الحجم بسهولة مع الحفاظ على الجودة.
+    </p>
+</section>
+
