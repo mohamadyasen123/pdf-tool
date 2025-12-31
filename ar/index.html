@@ -9,9 +9,8 @@
       gtag('config', 'G-22SFQH4CP1');
     </script>
 
-    <link rel="icon" href="icon/icon.png" type="image/png">
-    <link rel="apple-touch-icon" href="icon/icon.png">
-    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="../icon/icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="../icon/icon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -35,8 +34,26 @@
             padding: 20px;
         }
 
+        /* زر اللغة */
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+            z-index: 100;
+        }
+        .lang-switch:hover { background: white; color: #764ba2; }
+
         /* ===== الهيدر والشعار ===== */
-        .header { text-align: center; margin-bottom: 50px; padding-top: 20px; }
+        .header { text-align: center; margin-bottom: 50px; padding-top: 50px; position: relative; }
         .logo-container { display: flex; align-items: center; justify-content: center; margin-bottom: 15px; gap: 15px; }
         .logo {
             width: 65px; height: 65px;
@@ -103,7 +120,7 @@
             line-height: 1.6;
         }
 
-        /* ===== قسم السيو (SEO) لزيادة الأرشفة ===== */
+        /* ===== قسم السيو (SEO) ===== */
         .seo-intro {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -129,6 +146,8 @@
 </head>
 <body>
 
+    <a href="../index.html" class="lang-switch">English 🇬🇧</a>
+
     <header class="header">
         <div class="logo-container">
             <div class="logo"></div>
@@ -144,6 +163,7 @@
         </div>
 
         <div class="tools-grid">
+            
             <a href="pdf-to-word.html" class="tool-card">
                 <div class="tool-icon">📝</div>
                 <h3>تحويل PDF إلى Word</h3>
@@ -167,15 +187,15 @@
                 <h3>تحويل الصور إلى PDF</h3>
                 <p>حول صورك (JPG, PNG) إلى ملف PDF منسق واحترافي في ثوانٍ معدودة.</p>
             </a>
+            
         </div>
     </div>
 
     <footer class="footer">
         <div style="margin-bottom: 15px;">
-            <a href="privacy.html" style="color: white; margin: 0 10px; text-decoration: none;">سياسة الخصوصية</a> | 
-            <a href="terms.html" style="color: white; margin: 0 10px; text-decoration: none;">شروط الاستخدام</a>
+            <p style="color: rgba(255,255,255,0.7);">أمان بنسبة 100% داخل متصفحك</p>
         </div>
-        <p>&copy; 2025 PDF Masterly. أمان بنسبة 100% داخل متصفحك.</p>
+        <p>&copy; 2025 PDF Masterly. جميع الحقوق محفوظة.</p>
     </footer>
 
 </body>
