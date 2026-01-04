@@ -2,203 +2,70 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Compress PDF Online | PDFMasterlyTools</title>
+<meta name="description" content="Compress PDF files online quickly and safely using PDFMasterlyTools without losing quality.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Compress PDF Online | PDF Masterly</title>
-<meta name="description" content="Compress your PDF files online for free. Reduce PDF size quickly without losing quality. Works directly in your browser. Ideal for scanned and image-heavy PDFs.">
-
-<link rel="icon" href="icon/icon.png" type="image/png">
-
-<!-- PDF.js and jsPDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 <style>
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background:#f8fafc;
-    margin:0;
-    color:#334155;
-}
-.navbar {
-    background:#fff;
-    padding:15px 40px;
-    box-shadow:0 2px 10px rgba(0,0,0,.05);
-}
-.navbar a {
-    color:#10b981;
-    font-weight:bold;
-    text-decoration:none;
-    font-size:1.2rem;
-}
-.hero {
-    text-align:center;
-    padding:70px 20px;
-    background:#fff;
-}
-.hero h1 {
-    margin:0;
-    font-size:2.6rem;
-    color:#0f172a;
-}
-.hero p {
-    color:#64748b;
-    font-size:1.2rem;
-}
-.tool {
-    max-width:700px;
-    background:#fff;
-    margin:-50px auto 40px;
-    padding:40px;
-    border-radius:25px;
-    box-shadow:0 20px 40px rgba(0,0,0,.1);
-    text-align:center;
-}
-.drop {
-    border:3px dashed #cbd5e1;
-    padding:50px;
-    border-radius:20px;
-    cursor:pointer;
-    background:#fafafa;
-}
-.drop:hover {
-    border-color:#10b981;
-    background:#f0fdf4;
-}
-button {
-    width:100%;
-    padding:18px;
-    margin-top:25px;
-    border:none;
-    border-radius:15px;
-    font-size:1.1rem;
-    font-weight:bold;
-    background:linear-gradient(135deg,#10b981,#3b82f6);
-    color:#fff;
-    cursor:pointer;
-    display:none;
-}
-select {
-    width:100%;
-    padding:12px;
-    margin-top:20px;
-    border-radius:10px;
-    border:1px solid #cbd5e1;
-    font-size:1rem;
-}
-.info {
-    margin-top:15px;
-    font-weight:bold;
-}
-.footer {
-    text-align:center;
-    color:#64748b;
-    margin:40px 0;
-}
+  body { font-family: Arial, sans-serif; line-height:1.6; background:#f9f9f9; color:#333; padding:20px; }
+  h1 { color:#1d4ed8; }
+  h2 { color:#2563eb; }
+  h3 { color:#16a34a; }
+  p { margin:10px 0; }
+  a.button { display:inline-block; padding:12px 22px; background:#2563eb; color:#fff; text-decoration:none; border-radius:6px; margin:10px 0; font-weight:bold; }
+  a.button:hover { background:#1e40af; }
+  section { background:#fff; padding:15px; border-radius:8px; margin-top:30px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+  section h3 { margin-top:0; }
+  section ul li a { color:#2563eb; text-decoration:none; }
+  section ul li a:hover { text-decoration:underline; }
 </style>
 </head>
-
 <body>
 
-<nav class="navbar">
-    <a href="#">PDF Masterly</a>
-</nav>
+<article>
+<h1>✨ Compress PDF Files Online Without Losing Quality</h1>
 
-<div class="hero">
-    <h1>Compress PDF Online 📄✨</h1>
-    <p>Reduce PDF file size quickly and securely, without losing quality. Ideal for scanned or image-heavy PDFs.</p>
-</div>
+<p>
+📄 PDF files can be very large and difficult to share. Compressing your PDF makes it smaller and easier to send. 
+Use PDFMasterlyTools to compress your PDF safely and quickly.
+</p>
 
-<div class="tool">
-    <div class="drop" onclick="pdfInput.click()">
-        <input type="file" id="pdfInput" accept=".pdf" hidden>
-        <p id="fileName">Click to select a PDF file</p>
-        <p id="sizeInfo"></p>
-    </div>
+<p>
+You can compress your PDF instantly with our 
+<a href="/compress-pdf.html" class="button">Compress PDF Tool</a> online for free.
+</p>
 
-    <select id="quality">
-        <option value="0.8">🟢 High Quality (Light Compression)</option>
-        <option value="0.6" selected>🟡 Medium Quality (Recommended)</option>
-        <option value="0.4">🔴 Low Quality (Strong Compression)</option>
-    </select>
+<h2>🔹 Why Compress PDF Files?</h2>
+<p>
+Compressing PDFs saves storage space, allows faster emailing, and improves loading times on websites.
+</p>
 
-    <button id="compressBtn">Compress & Download</button>
+<h2>📝 Steps to Compress PDF Files Online</h2>
+<ol>
+<li>Open the Compress PDF tool</li>
+<li>Upload your PDF file</li>
+<li>Click "Compress" and download the smaller file</li>
+</ol>
 
-    <div class="info" id="status"></div>
-</div>
+<h2>❓ Frequently Asked Questions</h2>
+<h3>Will the quality of my PDF decrease?</h3>
+<p>✅ The tool compresses files without losing significant quality for standard documents.</p>
 
-<div class="footer">
-    Works completely in your browser 🔐 No file uploads
-</div>
+<h3>Is it safe to compress PDF files online?</h3>
+<p>✅ Yes, all files are processed securely and deleted after compression.</p>
 
-<script>
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+<h3>Does it work on mobile devices?</h3>
+<p>✅ Yes, the Compress PDF tool works on all devices including mobile and tablets.</p>
 
-const pdfInput = document.getElementById("pdfInput");
-const compressBtn = document.getElementById("compressBtn");
-const fileName = document.getElementById("fileName");
-const sizeInfo = document.getElementById("sizeInfo");
-const status = document.getElementById("status");
-
-pdfInput.onchange = () => {
-    const file = pdfInput.files[0];
-    if (!file) return;
-
-    fileName.textContent = file.name;
-    sizeInfo.textContent =
-        "Original Size: " + (file.size / 1024 / 1024).toFixed(2) + " MB";
-    compressBtn.style.display = "block";
-};
-
-compressBtn.onclick = async () => {
-    const file = pdfInput.files[0];
-    const quality = parseFloat(document.getElementById("quality").value);
-
-    compressBtn.disabled = true;
-    status.textContent = "⏳ Compressing...";
-
-    const buffer = await file.arrayBuffer();
-    const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
-
-    const { jsPDF } = window.jspdf;
-    const newPdf = new jsPDF("p","mm","a4");
-
-    for (let i = 1; i <= pdf.numPages; i++) {
-        const page = await pdf.getPage(i);
-        const viewport = page.getViewport({ scale: 1.3 });
-
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
-
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-
-        await page.render({ canvasContext: ctx, viewport }).promise;
-
-        const img = canvas.toDataURL("image/jpeg", quality);
-
-        if (i > 1) newPdf.addPage();
-        newPdf.addImage(img, "JPEG", 0, 0, 210, 297);
-    }
-
-    newPdf.save("compressed_" + file.name);
-
-    status.textContent = "✅ Compression completed!";
-    compressBtn.disabled = false;
-};
-</script>
-
-</body>
-</html>
+<!-- Helpful Articles Section -->
 <section>
-<h3>Helpful Articles</h3>
+<h3>📚 Helpful Articles</h3>
 <ul>
-<li><a href="/blog/how-to-compress-pdf.html">How to Compress PDF Files Online Without Losing Quality</a></li>
-<li><a href="/blog/how-to-merge-pdf.html">How to Merge PDF Files Online for Free</a></li>
-<li><a href="/blog/how-to-convert-jpg-to-pdf.html">How to Convert JPG to PDF Online Easily</a></li>
-<li><a href="/blog/how-to-convert-pdf-to-word.html">How to Convert PDF to Word Without Software</a></li>
+  <li><a href="/merge-pdf.html">Merge PDF Files Online ✅</a></li>
+  <li><a href="/jpg-to-pdf.html">Convert JPG to PDF Online 🖼️</a></li>
+  <li><a href="/pdf-to-word.html">Convert PDF to Word Online 📄</a></li>
 </ul>
 </section>
 
-
+</article>
+</body>
+</html>
